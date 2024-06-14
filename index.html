@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Conversor</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+body{
+	margin: 0px;
+	padding: 0px;
+    background-color: antiquewhite;
+}
+.converter-body{
+	width: 400px;
+	height: 150px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	box-shadow: 0px 0px 2px 1px #000000;
+    background-color: #d3d3d3;
+}
+.converter-title{
+	text-align: center;
+	margin: 13px 0px;
+	font-size: 40px;
+}
+input{
+	height: 25px;
+	text-align: center;
+	border: 1px solid black;
+}
+#input{
+	margin-left: 25px;
+}
+#inputType,#resultType{
+	width: 174.66px;
+	margin-left: 25px;
+	color: rgb(8, 8, 8);
+	border: 1px solid black;
+}
+#resultType{
+	margin-left: 13.5px;
+}
+    </style>
+   
+</head>
+<body>
+    <div class="converter-body">
+		
+		<h1 class="converter-title">Conversor de Medidas</h1>
+
+		<input type="text" placeholder="Input" id="input">
+		<span>=</span>
+		<input type="text" placeholder="Result" id="result">
+
+
+		<select  id="inputType">
+			<option value="meter">Metro</option>
+			<option value="kilometer">Quilometro</option>
+			<option value="Centimeter">Centimetro</option>
+            <option value="Milimetro">Milimetro</option>
+		</select>
+
+		<select  id="resultType">
+			<option value="meter">Metro</option>
+			<option value="kilometer"> Quiilometro</option>
+			<option value="Centimeter">Centimetro</option>
+            <option value="Milimetro">Milimetro</option>
+		</select>
+
+
+
+	</div>
+
+<div>
+
+
+
+
+    
+</div>
+
+ <script>
+var input = document.getElementById('input');
+var result = document.getElementById('result');
+var inputType = document.getElementById('inputType');
+var resultType = document.getElementById('resultType');
+var option_from,option_to;
+
+// now add listener
+input.addEventListener("keyup",myResult);
+inputType.addEventListener("change",myResult);
+resultType.addEventListener("change",myResult);
+
+// taking initial value
+option_from = inputType.value;
+option_to   = resultType.value;
+
+
+function myResult(){
+
+
+// when we change the input and output type vale we need to updata the 
+// option_from and option_to
+
+	option_from = inputType.value;
+	option_to = resultType.value;
+
+
+// now compare the input and resultType value and add formula
+
+	if(option_from === "meter" && option_to==="kilometer"){
+		//this is meter to kilometer formula 
+		result.value = Number(input.value) * 0.001;
+	}else if(option_from === "meter" && option_to==="Centimeter"){
+
+		//this is meter to Centimeter formula 
+		result.value = Number(input.value) * 100;
+
+	}else if(option_from === "meter" && option_to==="meter"){
+		//this is meter to meter formula 
+		result.value = input.value
+	}
+    else if(option_from === "meter" && option_to==="Milimetro"){
+		//this is meter to meter formula 
+		result.value = Number(input.value) * 1000;
+	}
+    
+
+
+
+	if(option_from === "kilometer" && option_to==="meter"){
+		//this is kilometer to meter formula 
+		result.value = Number(input.value) * 1000;
+	}else if(option_from === "kilometer" && option_to==="Centimeter"){
+		//this is kilometer to Centimeter formula 
+		result.value = Number(input.value) * 100000;
+	}else if(option_from === "kilometer" && option_to==="kilometer"){
+		//this is kilometer to kilometer formula 
+		result.value = input.value
+	}else if(option_from === "kilometer" && option_to==="Milimetro"){
+		//this is meter to meter formula 
+		result.value = Number(input.value) * 1000000;
+	}
+
+	if(option_from === "Centimeter" && option_to==="kilometer"){
+		//this is Centimeter to kilometer formula 
+		result.value = Number(input.value) * 0.00001;
+	}else if(option_from === "Centimeter" && option_to==="meter"){
+		//this is Centimeter to meter formula 
+		result.value = Number(input.value) * 0.01;
+	}else if(option_from === "Centimeter" && option_to==="Centimeter"){
+		//this is Centimeter to Centimeter formula 
+		result.value = input.value
+	}else if(option_from === "Centimeter" && option_to==="Milimetro"){
+		//this is Centimeter to Centimeter formula 
+		result.value = Number(input.value) * 10
+	}
+	
+
+    if(option_from === "Milimetro" && option_to==="meter"){
+		//this is Centimeter to kilometer formula 
+		result.value = Number(input.value) / 1000;}
+        else if(option_from === "Milimetro" && option_to==="centimeter"){
+		//this is Centimeter to kilometer formula 
+		result.value = Number(input.value) / 10;}
+        else if(option_from === "Milimetro" && option_to==="kilometer"){
+		//this is Centimeter to kilometer formula 
+		result.value = Number(input.value) / 1000000;}
+        else if(option_from === "Milimetro" && option_to==="Milimetro"){
+		//this is Centimeter to Centimeter formula 
+		result.value = input.value
+
+}
+
+
+}
+
+
+</script>
+
+</body>
+</html>
